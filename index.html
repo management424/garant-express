@@ -539,9 +539,9 @@
     .hero { padding: 48px 4% 48px; }
     .hero-eyebrow { font-size: 11px; letter-spacing: 1px; }
     .contact-form { padding: 28px 20px; }
-    .stats-bar { gap: 16px; padding: 16px 4%; justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; }
-    .stat-item { min-width: 90px; flex-shrink: 0; text-align: left; }
-    .stat-num { font-size: 18px; }
+    .stats-bar { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; padding: 0; background: #c4861a; }
+    .stat-item { background: var(--accent); padding: 16px; text-align: center; }
+    .stat-num { font-size: 20px; }
     .stat-label { font-size: 10px; }
     .services-grid { grid-template-columns: 1fr; }
     .pillars { grid-template-columns: 1fr; gap: 24px; }
