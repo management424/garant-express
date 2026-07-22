@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Garant Express LLC — Heavy-Duty Truck Repair</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230f0f0f'/%3E%3Ctext x='16' y='22' font-family='Arial,sans-serif' font-size='14' font-weight='800' fill='%23E8A020' text-anchor='middle'%3EGE%3C/text%3E%3C/svg%3E">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -801,15 +802,46 @@
 </footer>
 
 <script>
-function submitForm() {
+async function submitForm() {
   const phone = document.getElementById('phone').value.trim();
   const fname = document.getElementById('fname').value.trim();
   if (!fname || !phone) {
     alert('Please enter at least your name and phone number.');
     return;
   }
-  document.getElementById('form-wrap').style.display = 'none';
-  document.getElementById('success-msg').style.display = 'block';
+
+  const btn = document.querySelector('.btn-submit');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+
+  const data = {
+    name: fname + ' ' + document.getElementById('lname').value.trim(),
+    phone: phone,
+    email: document.getElementById('email').value.trim(),
+    truck: document.getElementById('truck').value,
+    service: document.getElementById('service').value,
+    notes: document.getElementById('notes').value.trim()
+  };
+
+  try {
+    const res = await fetch('https://formspree.io/f/mojgndlw', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    if (res.ok) {
+      document.getElementById('form-wrap').style.display = 'none';
+      document.getElementById('success-msg').style.display = 'block';
+    } else {
+      alert('Something went wrong. Please call us directly at +1 (470) 850-5121');
+      btn.textContent = 'Send request';
+      btn.disabled = false;
+    }
+  } catch(e) {
+    alert('Something went wrong. Please call us directly at +1 (470) 850-5121');
+    btn.textContent = 'Send request';
+    btn.disabled = false;
+  }
 }
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
