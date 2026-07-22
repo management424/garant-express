@@ -78,6 +78,8 @@
   }
 
   .nav-cta:hover { background: var(--accent-dark) !important; color: var(--black) !important; }
+  .nav-mobile-call { display: none; }
+  @media (max-width: 768px) { .nav-mobile-call { display: inline-block; font-size: 13px; padding: 7px 14px; } }
 
   /* HERO */
   .hero {
@@ -529,18 +531,23 @@
   footer p { font-size: 13px; }
 
   @media (max-width: 768px) {
+    nav { height: 52px; padding: 0 4%; }
+    .nav-logo { font-size: 15px; }
     .nav-links { display: none; }
     .contact-layout { grid-template-columns: 1fr; gap: 40px; }
     .form-row { grid-template-columns: 1fr; }
-    .hero { padding: 60px 5% 60px; }
+    .hero { padding: 48px 4% 48px; }
+    .hero-eyebrow { font-size: 11px; letter-spacing: 1px; }
     .contact-form { padding: 28px 20px; }
-    .stats-bar { gap: 20px; padding: 20px 5%; }
-    .stat-item { min-width: 120px; }
+    .stats-bar { gap: 16px; padding: 16px 4%; justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; }
+    .stat-item { min-width: 90px; flex-shrink: 0; text-align: left; }
+    .stat-num { font-size: 18px; }
+    .stat-label { font-size: 10px; }
     .services-grid { grid-template-columns: 1fr; }
     .pillars { grid-template-columns: 1fr; gap: 24px; }
-    .section { padding: 56px 5%; }
-    .section-dark { padding: 56px 5%; }
-    .contact-section { padding: 56px 5%; }
+    .section { padding: 48px 4%; }
+    .section-dark { padding: 48px 4%; }
+    .contact-section { padding: 48px 4%; }
     footer { flex-direction: column; align-items: flex-start; gap: 8px; }
     .hero-actions { flex-direction: column; align-items: flex-start; }
     .btn-primary { width: 100%; text-align: center; }
@@ -556,6 +563,7 @@
     <li><a href="#contact">Contact</a></li>
     <li><a href="tel:+14708505121" class="nav-cta">Call Now</a></li>
   </ul>
+  <a href="tel:+14708505121" class="nav-cta nav-mobile-call">Call Now</a>
 </nav>
 
 <!-- HERO -->
@@ -691,7 +699,7 @@
         <div class="contact-detail-icon">📍</div>
         <div class="contact-detail-text">
           <strong>Address</strong>
-          <span>865 McFarland Pkwy<br>Alpharetta, GA 30004</span>
+          <a href="https://maps.google.com/?q=865+McFarland+Pkwy+Alpharetta+GA+30004" target="_blank" style="color: var(--text); text-decoration: none; border-bottom: 1px solid #ccc;">865 McFarland Pkwy<br>Alpharetta, GA 30004</a>
         </div>
       </div>
 
