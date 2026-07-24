@@ -467,22 +467,69 @@ gsap.from(".ct-link-card",{y:30,opacity:0,duration:.6,stagger:.1,ease:"power3.ou
 gsap.from(".form-wrap",{y:40,opacity:0,duration:.8,ease:"power3.out",
   scrollTrigger:{trigger:".ct-form-col",start:"top 82%"}});
 
-function submitForm(){
-  const name=document.getElementById("f_name").value.trim();
-  const phone=document.getElementById("f_phone").value.trim();
-  if(!name||!phone){
-    // shake effect on empty fields
-    if(!name) gsap.to("#f_name",{x:[-8,8,-6,6,-3,3,0],duration:.4,ease:"none"});
-    if(!phone) gsap.to("#f_phone",{x:[-8,8,-6,6,-3,3,0],duration:.4,ease:"none"});
-    return;
+async function submitForm(){
+  const name  = document.getElementById("f_name").value.trim();
+  const phone = document.getElementById("f_phone").value.trim();
+  const brand = document.getElementById("f_brand").value;
+  const service = document.getElementById("f_service").value;
+  const msg   = document.getElementById("f_msg").value.trim();
+
+  // Validate required fields
+  if(!name){gsap.to("#f_name",{keyframes:{x:[-8,8,-5,5,-2,2,0]},duration:.4});document.getElementById("f_name").focus();return;}
+  if(!phone){gsap.to("#f_phone",{keyframes:{x:[-8,8,-5,5,-2,2,0]},duration:.4});document.getElementById("f_phone").focus();return;}
+
+  // Change button state
+  const btn = document.querySelector(".btn-submit");
+  btn.textContent = "SENDING...";
+  btn.style.opacity = "0.7";
+  btn.style.pointerEvents = "none";
+
+  try {
+    const res = await fetch("https://formspree.io/f/mojgndlw", {
+      method: "POST",
+      headers: {"Content-Type": "application/json", "Accept": "application/json"},
+      body: JSON.stringify({
+        name,
+        phone,
+        brand: brand || "Not specified",
+        service: service || "Not specified",
+        message: msg || "No description provided"
+      })
+    });
+
+    if(res.ok){
+      // Success
+      const wrap = document.getElementById("formWrap");
+      const succ = document.getElementById("formSuccess");
+      gsap.to(wrap,{opacity:0,y:10,duration:.3,onComplete:()=>{
+        wrap.style.display="none";
+        succ.classList.add("show");
+        gsap.from(succ,{opacity:0,y:12,duration:.5,ease:"power3.out"});
+      }});
+    } else {
+      // Server error
+      btn.textContent = "TRY AGAIN →";
+      btn.style.opacity = "1";
+      btn.style.pointerEvents = "auto";
+      btn.style.background = "#ff4444";
+      btn.style.color = "#fff";
+      setTimeout(()=>{
+        btn.textContent = "SEND REQUEST →";
+        btn.style.background = "";
+        btn.style.color = "";
+      }, 3000);
+    }
+  } catch(err){
+    // Network error
+    btn.textContent = "NO CONNECTION — CALL US";
+    btn.style.opacity = "1";
+    btn.style.pointerEvents = "auto";
+    btn.style.background = "#222";
+    setTimeout(()=>{
+      btn.textContent = "SEND REQUEST →";
+      btn.style.background = "";
+    }, 4000);
   }
-  const wrap=document.getElementById("formWrap");
-  const succ=document.getElementById("formSuccess");
-  gsap.to(wrap,{opacity:0,y:10,duration:.3,onComplete:()=>{
-    wrap.style.display="none";
-    succ.classList.add("show");
-    gsap.from(succ,{opacity:0,y:12,duration:.5,ease:"power3.out"});
-  }});
 }
 
 </script>
