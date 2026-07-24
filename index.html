@@ -230,6 +230,42 @@ textarea{resize:vertical;min-height:88px;margin-bottom:0}
   .fg.full{grid-column:span 1}
 }
 
+
+/* ═══ MAP ═══ */
+.map-section{padding:0 52px 120px;background:#040404}
+.map-inner{max-width:1100px;margin:0 auto}
+.map-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:16px}
+.map-title{font-family:"Bebas Neue";font-size:clamp(32px,4vw,52px);letter-spacing:.04em;color:var(--text)}
+.map-title span{color:var(--cyan)}
+.map-wrap{position:relative;border:1px solid rgba(0,229,255,.12);border-radius:3px;overflow:hidden}
+.map-wrap iframe{display:block;width:100%;height:420px;filter:grayscale(100%) invert(92%) contrast(90%) brightness(0.85) hue-rotate(180deg);border:none}
+.map-overlay-btn{
+  position:absolute;bottom:20px;right:20px;
+  padding:12px 28px;
+  background:var(--cyan);color:#080808;
+  font-family:"Bebas Neue";font-size:16px;letter-spacing:.1em;
+  text-decoration:none;border-radius:2px;
+  transition:all .3s;
+  box-shadow:0 4px 24px rgba(0,0,0,.4);
+}
+.map-overlay-btn:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,229,255,.3)}
+.map-address-strip{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 24px;
+  background:#0a0a0a;
+  border-top:1px solid rgba(0,229,255,.08);
+  flex-wrap:wrap;gap:12px;
+}
+.map-addr-text{font-size:13px;color:var(--text2);font-weight:300}
+.map-addr-text strong{color:var(--text);font-weight:500}
+.map-dir-link{font-size:11px;letter-spacing:.1em;color:var(--cyan);text-decoration:none;text-transform:uppercase;transition:opacity .3s}
+.map-dir-link:hover{opacity:.7}
+@media(max-width:900px){
+  .map-section{padding:0 24px 80px}
+  .map-wrap iframe{height:300px}
+  .map-header{flex-direction:column;align-items:flex-start}
+}
+
 </style>
 </head>
 <body>
@@ -405,6 +441,29 @@ textarea{resize:vertical;min-height:88px;margin-bottom:0}
       </div>
     </div>
 
+  </div>
+</section>
+
+
+<section class="map-section">
+  <div class="map-inner">
+    <div class="map-header">
+      <div class="map-title">OUR <span>LOCATION</span></div>
+      <a href="https://maps.google.com/?q=865+McFarland+Pkwy+Alpharetta+GA+30004" target="_blank" class="map-overlay-btn" style="position:relative;bottom:auto;right:auto">GET DIRECTIONS →</a>
+    </div>
+    <div class="map-wrap">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d831.15!2d-84.29876!3d34.07405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f570c1f52a4c07%3A0xd3d5bc8d7c4c9b4e!2s865%20McFarland%20Pkwy%2C%20Alpharetta%2C%20GA%2030004!5e0!3m2!1sen!2sus!4v1690000000000!5m2!1sen!2sus"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+      <a href="https://maps.google.com/?q=865+McFarland+Pkwy+Alpharetta+GA+30004" target="_blank" class="map-overlay-btn">OPEN IN MAPS →</a>
+    </div>
+    <div class="map-address-strip">
+      <div class="map-addr-text"><strong>Garant Express LLC</strong> &nbsp;·&nbsp; 865 McFarland Pkwy, Alpharetta, GA 30004</div>
+      <a href="https://maps.google.com/?q=865+McFarland+Pkwy+Alpharetta+GA+30004" target="_blank" class="map-dir-link">Get Directions →</a>
+    </div>
   </div>
 </section>
 
