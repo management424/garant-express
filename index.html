@@ -27,7 +27,12 @@ nav.bg{background:rgba(8,8,8,.94);backdrop-filter:blur(20px);border-bottom:1px s
 .nav-links{display:flex;gap:36px;list-style:none}
 .nav-links a{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text2);text-decoration:none;transition:color .3s}
 .nav-links a:hover{color:var(--cyan)}
-.nav-phone{font-size:13px;color:var(--cyan);text-decoration:none;font-weight:500;letter-spacing:.04em;transition:opacity .3s}
+.nav-phone{
+  font-size:16px;color:var(--cyan);text-decoration:none;
+  font-weight:600;letter-spacing:.04em;transition:opacity .3s;
+  display:flex;align-items:center;gap:8px;
+}
+.nav-phone::before{content:"📞";font-size:13px}
 .nav-phone:hover{opacity:.7}
 .nav-cta{padding:10px 24px;border:1px solid var(--cyan);color:var(--cyan);background:transparent;font-family:"Inter";font-size:11px;letter-spacing:.1em;text-transform:uppercase;cursor:none;border-radius:2px;transition:all .3s}
 .nav-cta:hover{background:var(--cyan);color:#080808}
@@ -332,6 +337,28 @@ textarea{resize:vertical;min-height:88px;margin-bottom:0}
   .trust-item{min-width:140px}
 }
 
+
+/* Mobile address strip after hero */
+.mobile-addr-strip{
+  display:none;
+  background:#050505;
+  border-bottom:1px solid rgba(0,229,255,.1);
+  padding:16px 24px;
+}
+.mobile-addr-strip a{
+  display:flex;align-items:center;gap:10px;
+  text-decoration:none;color:var(--text);
+  font-size:13px;font-weight:300;
+}
+.mobile-addr-strip .addr-icon{font-size:18px}
+.mobile-addr-strip .addr-text{flex:1;line-height:1.5}
+.mobile-addr-strip .addr-text strong{display:block;color:var(--cyan);font-size:11px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:2px}
+.mobile-addr-strip .addr-arrow{color:var(--cyan);font-size:18px}
+@media(max-width:900px){
+  .mobile-addr-strip{display:block}
+  .nav-phone{display:none}
+}
+
 </style>
 </head>
 <body>
@@ -378,6 +405,18 @@ textarea{resize:vertical;min-height:88px;margin-bottom:0}
   </div>
   <div class="scroll-i" id="scrollI"><div class="sl-bar"></div><span>Scroll</span></div>
 </section>
+
+<!-- Mobile address strip -->
+<div class="mobile-addr-strip">
+  <a href="https://maps.google.com/?q=865+McFarland+Pkwy+Alpharetta+GA+30004" target="_blank">
+    <span class="addr-icon">📍</span>
+    <span class="addr-text">
+      <strong>Easy Truck &amp; Trailer Access</strong>
+      865 McFarland Pkwy, Alpharetta, GA 30004
+    </span>
+    <span class="addr-arrow">→</span>
+  </a>
+</div>
 
 <div class="mq"><div class="mq-t">
   <span class="mi">Engine Overhaul</span><span class="mi">Volvo</span><span class="mi">Freightliner</span><span class="mi">Kenworth</span><span class="mi">Peterbilt</span><span class="mi">ECM Diagnostics</span><span class="mi">Transmission Rebuild</span><span class="mi">AC Service</span><span class="mi">Mobil Delvac Certified</span><span class="mi">Alpharetta GA</span>
