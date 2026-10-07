@@ -1009,6 +1009,30 @@ footer {
   border: 1px solid var(--dark-border); padding: 2px 8px; border-radius: 3px;
 }
 
+
+/* ── HERO PRICE STRIP ───────────────────────────────────────── */
+.hero-price-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 14px 18px;
+  background: linear-gradient(135deg, rgba(232,162,0,.08) 0%, rgba(232,162,0,.04) 100%);
+  border: 1px solid rgba(232,162,0,.22);
+  border-radius: 10px;
+}
+.price-chip {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+}
+.price-sep {
+  color: var(--amber);
+  font-size: 16px;
+  line-height: 1;
+}
+
 </style>
 </head>
 <body>
@@ -1041,7 +1065,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-left">
-      <p class="hero-eyebrow">Alpharetta, GA · Same-Day Diagnostics</p>
+      <p class="hero-eyebrow">Alpharetta, GA · Fair Prices · Same-Day Service</p>
       <h1>
         HEAVY<br>
         TRUCK<br>
@@ -1049,9 +1073,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <em>DONE RIGHT.</em>
       </h1>
       <p class="hero-desc">
-        Engine overhaul, ECM diagnostics, transmission rebuild.
-        <strong>ASE certified technicians.</strong>
-        We call you back within the hour.
+        From oil changes to engine rebuilds — <strong>we handle it all.</strong>
+        Honest pricing, no surprises. Call us, get your quote, and we get to work.
       </p>
       <div class="hero-actions">
         <a href="tel:+14708505121" class="btn-primary">
@@ -1059,6 +1082,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           Call Now — (470) 850-5121
         </a>
         <a href="#contact" class="btn-ghost">Schedule Service →</a>
+      </div>
+      <div class="hero-price-strip">
+        <span class="price-chip">💰 Fair, upfront pricing</span>
+        <span class="price-sep">·</span>
+        <span class="price-chip">🔧 Any job, any size</span>
+        <span class="price-sep">·</span>
+        <span class="price-chip">📞 Quote in minutes</span>
       </div>
       <div class="hero-trust">
         <span class="trust-chip">ASE Certified</span>
